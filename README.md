@@ -25,7 +25,7 @@ Certifique-se de que você possui as seguintes ferramentas instaladas:
 
 Os testes neste projeto estão configurados para rodar no seguinte site:
 
-- URL do site: `http://www.automationpractice.pl/index.php?controller=my-account`
+- URL do site: `http://www.automationpractice.pl`
 
 ## Executando os Testes
 **Para rodar os testes, utilize um dos comandos abaixo:**
@@ -38,9 +38,9 @@ Modo Interativo (abre a interface do Cypress para executar os testes manualmente
 `npx cypress open`
 
 ## Estrutura do Projeto
-cypress/e2e/: contém os arquivos de teste.
-cypress/fixtures/: contém dados de teste, como JSONs com dados para simulação.
-cypress/support/: contém comandos personalizados e configurações globais.
+- cypress/e2e/: contém os arquivos de teste.
+- cypress/fixtures/: contém dados de teste, como JSONs com dados para simulação.
+- cypress/support/: contém comandos personalizados e configurações globais.
 
 ## Outros Comandos Úteis
  - Limpar Cache:
