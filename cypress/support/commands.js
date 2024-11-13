@@ -26,12 +26,14 @@
 
 import locator from "./locators";
 
+// features
 Cypress.Commands.add('login', (email, password) => { 
     cy.get(locator.LOGIN.EMAIL_ADDRESS).type(email)
     cy.get(locator.LOGIN.PASSWORD).type(password)
     cy.get(locator.LOGIN.BTN_LOGIN).click()
 })
 
+// backend
 Cypress.Commands.add('loginRequest', (email, password) => { 
     cy.request({
         method: 'POST',
