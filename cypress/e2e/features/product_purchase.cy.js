@@ -7,22 +7,23 @@ describe('Purchase Flow', () => {
       //Arrange
       cy.visit('/')
     })
-  
+
     it.only('Product purchase available - Logged In', () => {
         // Act
-        cy.get(locator.MY_ACCOUNT.HOME_BTN_LOGIN).click()
+        cy.get(locator.HOME.HOME_BTN_LOGIN).click()
         cy.login('TestQaT@gmail.com', 'TestQa321')
 
-        cy.get(locator.MY_ACCOUNT.HEADER_MENU).contains('Women').click()
-        cy.get(locator.MY_ACCOUNT.BLOUSE_OPTION).click()
-        cy.get(locator.MY_ACCOUNT.CHANGE_COLOR).click()
-        cy.get(locator.MY_ACCOUNT.ADD_MORE).click()
-        cy.get(locator.MY_ACCOUNT.ADD_TO_CART).click()
-        // TODO finish mapping the locators
-        // Assert
+        cy.product_selection(3)
 
+        cy.purchase('payment_card') // payment_card or bank_slip
+
+        // Assert
+        cy.get('@orderReference').then(response => {
+            cy.get(locator.ORDER_HISTORY.ORDER_REFERENCE).should('contain', response)
+            cy.url().should('equal', 'http://www.automationpractice.pl/index.php?controller=history')
+        })
     })
-  
+
     it('Purchase of product not available - Logged in', () => {
         // Act
 

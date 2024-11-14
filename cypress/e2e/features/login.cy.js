@@ -13,7 +13,7 @@ describe('Login page', () => {
         cy.login('TestQaT@gmail.com', 'TestQa321')
 
         // Assert
-        cy.get(locator.LOGIN.MY_ACCOUNT_TITLE).should( "have.text", "My account" );
+        cy.get(locator.MY_ACCOUNT.MY_ACCOUNT_TITLE).should( "have.text", "My account" );
         cy.url().should('equal', 'http://www.automationpractice.pl/index.php?controller=my-account')
     })
   
