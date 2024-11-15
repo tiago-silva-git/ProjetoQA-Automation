@@ -37,8 +37,11 @@ Cypress.Commands.add('product_selection', (quantity_of_products) => {
     cy.get(locator.MY_ACCOUNT.HEADER_MENU).contains('Women').click()
     cy.get(locator.MY_ACCOUNT.BLOUSE_OPTION).click()
     cy.get(locator.MY_ACCOUNT.CHANGE_COLOR).click()
-    // TODO adionar uma logica para adicionar quantos produtos eu quiser
-    cy.get(locator.MY_ACCOUNT.ADD_MORE).click()
+
+    // Loop to add the product to the desired quantity
+    for (let i = 0; i < quantity_of_products; i++) {
+        cy.get(locator.MY_ACCOUNT.ADD_MORE).click()
+    }
 
     cy.get(locator.MY_ACCOUNT.ADD_TO_CART).click()
     cy.get(locator.MY_ACCOUNT.BTN_ACCESS_TO_CART).click()
@@ -55,10 +58,10 @@ Cypress.Commands.add('purchase', (payment_method) => {
     } else if ('bank_slip') {
         cy.get(locator.STEPS_TO_PURCHASE.BANK_SLIP_PAYMENT).click()
     }
+
     cy.get(locator.STEPS_TO_PURCHASE.BTN_CONFIRM_ORDER).click()
     
     cy.get(locator.STEPS_TO_PURCHASE.ORDER_INFORMATION).invoke('text').then((full_text) => {
-            
         const regex = /order reference (\w+) in the subject/;
         const result = full_text.match(regex);
     
@@ -68,9 +71,9 @@ Cypress.Commands.add('purchase', (payment_method) => {
           } else {
             cy.log('Reference code not found.');
           }
-      });
+    });
 
-      cy.get(locator.STEPS_TO_PURCHASE.BTN_VIEW_HISTORY).click()
+    cy.get(locator.STEPS_TO_PURCHASE.BTN_VIEW_HISTORY).click()
 })
 
 // backend

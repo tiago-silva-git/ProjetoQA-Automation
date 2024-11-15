@@ -8,13 +8,12 @@ describe('Purchase Flow', () => {
       cy.visit('/')
     })
 
-    it.only('Product purchase available - Logged In', () => {
+    it('Product purchase available - Logged In', () => {
         // Act
         cy.get(locator.HOME.HOME_BTN_LOGIN).click()
+
         cy.login('TestQaT@gmail.com', 'TestQa321')
-
-        cy.product_selection(3)
-
+        cy.product_selection() // Add products to 1, 2, 3 more...
         cy.purchase('payment_card') // payment_card or bank_slip
 
         // Assert
@@ -26,12 +25,18 @@ describe('Purchase Flow', () => {
 
     it('Purchase of product not available - Logged in', () => {
         // Act
+        cy.get(locator.HOME.HOME_BTN_LOGIN).click()
+
+        cy.login('TestQaT@gmail.com', 'TestQa321')
+        cy.get(locator.MY_ACCOUNT.HEADER_MENU).contains('Women').click()
+        cy.get(locator.MY_ACCOUNT.PRODUCT_LIST).first().click()
 
         // Assert
-
+        cy.get(locator.DETAIL_PRODUCT.MESSAGE_PRODUCT_NOT_IN_STOCK).should('have.text', 'This product is no longer in stock')
+        cy.url().should('equal', 'http://www.automationpractice.pl/index.php?id_product=1&controller=product')
     })
 
-    it('Product Purchase Available - Logged Out', () => {
+    it.only('Product Purchase Available - Logged Out', () => {
         // Act
 
         // Assert

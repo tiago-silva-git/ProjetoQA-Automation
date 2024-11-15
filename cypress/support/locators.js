@@ -11,11 +11,15 @@ const locators = {
     MY_ACCOUNT: {
         MY_ACCOUNT_TITLE: '.page-heading',
         HEADER_MENU: '.sf-menu',
+        PRODUCT_LIST: '.product-image-container > .product_img_link',
         BLOUSE_OPTION: ':nth-child(2) > .product-container > .left-block > .product-image-container',
         CHANGE_COLOR: '#color_to_pick_list > :nth-child(1)',
         ADD_MORE: '.icon-plus',
         ADD_TO_CART: '#add_to_cart > .exclusive',
         BTN_ACCESS_TO_CART: '.button-medium > span'
+    },
+    DETAIL_PRODUCT: {
+        MESSAGE_PRODUCT_NOT_IN_STOCK: '#availability_value'
     },
     STEPS_TO_PURCHASE: {
         BTN_PROCEED_TO_CHECKOUT: '.cart_navigation > .button > span',
