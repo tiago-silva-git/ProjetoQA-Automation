@@ -71,6 +71,7 @@ Cypress.Commands.add('purchase', (payment_method) => {
           } else {
             cy.log('Reference code not found.');
           }
+    
     });
 
     cy.get(locator.STEPS_TO_PURCHASE.BTN_VIEW_HISTORY).click()
@@ -91,3 +92,4 @@ Cypress.Commands.add('loginRequest', (email, password) => {
         followRedirect: false     // Impede que o Cypress siga o redirecionamento
     })
 })
+

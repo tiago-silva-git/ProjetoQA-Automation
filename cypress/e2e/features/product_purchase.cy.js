@@ -13,7 +13,7 @@ describe('Purchase Flow', () => {
         cy.get(locator.HOME.HOME_BTN_LOGIN).click()
 
         cy.login('TestQaT@gmail.com', 'TestQa321')
-        cy.product_selection() // Add products to 1, 2, 3 more...
+        cy.product_selection() // increase the quantity of the selected product 1, 2, 3...
         cy.purchase('payment_card') // payment_card or bank_slip
 
         // Assert
@@ -36,8 +36,10 @@ describe('Purchase Flow', () => {
         cy.url().should('equal', 'http://www.automationpractice.pl/index.php?id_product=1&controller=product')
     })
 
-    it.only('Product Purchase Available - Logged Out', () => {
+    it.skip('Product Purchase Available - Logged Out', () => {
         // Act
+        cy.visit('http://www.automationpractice.pl/')
+        cy.product_selection() // increase the quantity of the selected product 1, 2, 3...
 
         // Assert
 

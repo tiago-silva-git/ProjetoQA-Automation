@@ -11,7 +11,7 @@ const locators = {
     MY_ACCOUNT: {
         MY_ACCOUNT_TITLE: '.page-heading',
         HEADER_MENU: '.sf-menu',
-        PRODUCT_LIST: '.product-image-container > .product_img_link',
+        PRODUCT_LIST: '.product-image-container > .product_img_link', // cy.get('[data-layer="Content"]')
         BLOUSE_OPTION: ':nth-child(2) > .product-container > .left-block > .product-image-container',
         CHANGE_COLOR: '#color_to_pick_list > :nth-child(1)',
         ADD_MORE: '.icon-plus',

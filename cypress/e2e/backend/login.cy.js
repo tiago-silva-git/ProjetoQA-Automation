@@ -11,7 +11,7 @@ describe('Login page', () => {
             expect(result.status).to.eq(302);
         })
     })
-  
+
     it('Login with incorrect password', () => {
         // Act
         cy.loginRequest("TestQaT@gmail.com", 'TestQa123').as('response')
@@ -19,6 +19,7 @@ describe('Login page', () => {
         // Assert
         cy.get('@response').then(result => {
             expect(result.status).to.eq(200);
+            expect(result.body).contains("Authentication failed.");
         })
     })
 
@@ -29,6 +30,7 @@ describe('Login page', () => {
         // Assert
         cy.get('@response').then(result => {
             expect(result.status).to.eq(200);
+            expect(result.body).contains("Authentication failed.");
         })
     });
   })
